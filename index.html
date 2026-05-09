@@ -1,1 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>REMAIN UNAWARE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="./style.css">
 
+</head>
+<body>
+
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <canvas id="snow" style="position:fixed;
+  top:0;
+  left:0;
+  pointer-events:none;
+  z-index:9999;"></canvas>
+
+  <div id="dbOverlay" style="display:none;position:fixed;inset:0;z-index:10000;background:#080808;flex-direction:column;align-items:center;justify-content:center;gap:14px;">
+  <div id="dbTag" style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.5em;text-transform:uppercase;color:rgba(180,175,170,0.35);opacity:0;">Remain Unaware · Database</div>
+  <div id="dbTitle" style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:clamp(56px,10vw,100px);letter-spacing:0.12em;text-transform:uppercase;color:#e8e6e3;line-height:1;opacity:0;">CHARACTERS</div>
+  <div id="dbScanline" style="width:2px;height:0;background:linear-gradient(to bottom,transparent,rgba(180,175,170,0.8),transparent);opacity:0;"></div>
+  <div id="dbSub" style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.45em;text-transform:uppercase;color:rgba(180,175,170,0.3);opacity:0;">07 ENTRIES FOUND</div>
+  <div style="width:180px;height:1px;background:rgba(180,175,170,0.1);position:relative;overflow:hidden;">
+    <div id="dbBarFill" style="position:absolute;left:0;top:0;bottom:0;width:0%;background:rgba(180,175,170,0.65);"></div>
+  </div>
+  <div id="dbStatus" style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.4em;text-transform:uppercase;color:rgba(180,175,170,0.35);">ACCESSING DATABASE...</div>
+</div>
+
+  <nav>
+    <div class="nav-logo">
+      <img src="./assets/logo.svg" height="28" alt="Remain Unaware">
+    </div>
+    <ul class="nav-links">
+      <li><a href="#" id="nav-characters-link" data-i18n="nav_characters"></a></li>
+      <li><a href="#" data-i18n="nav_backstory"></a></li>
+      <li><a href="#" data-i18n="nav_about"></a></li>
+      <li><a href="#" data-i18n="nav_fanworks"></a></li>
+      <li><a href="#" data-i18n="nav_ost"></a></li>
+    </ul>
+    <div class="nav-right">
+      <span data-i18n="nav_wip"></span>
+      &nbsp;·&nbsp;
+      <button id="lang-toggle" onclick="toggleLang()">EN</button>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <p class="hero-tag" data-i18n="hero_tag"></p>
+
+    <div class="flare-v"></div>
+
+    <div class="hero-title-wrap">
+      <img src="./assets/logo.svg" height="150" alt="Remain Unaware">
+    </div>
+
+    <img src="./assets/glock.png" class="hero-bg-img" alt="">
+
+<div class="glock-tooltip">
+  <span class="glock-tooltip-text">Johnny Maxwell's Glock 23 Gen4</span>
+  <div class="glock-tooltip-underline"></div>
+</div>
+
+<svg class="glock-line-svg" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9998;opacity:0;">
+  <line class="glock-line" x1="0" y1="0" x2="0" y2="0" stroke="rgba(255,255,255,0.4)" stroke-width="1" stroke-dasharray="300" stroke-dashoffset="300"/>
+</svg>
+
+    <canvas id="visualizer"></canvas>
+
+    <button id="music-toggle">
+  <svg id="music-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <polygon id="icon-play" points="6,4 20,12 6,20" fill="currentColor"/>
+    <g id="icon-pause" style="display:none">
+      <rect x="5" y="4" width="4" height="16" fill="currentColor"/>
+      <rect x="15" y="4" width="4" height="16" fill="currentColor"/>
+    </g>
+  </svg>
+</button>
+
+    <p class="hero-sub">
+      <span data-i18n="hero_sub"></span><br>
+      <em data-i18n="hero_credit"></em>
+    </p>
+
+    <div class="scroll-cue">
+      <span data-i18n="scroll"></span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span>JOHNNY ROBERT MAXWELL</span><span class="dot">—</span>
+      <span>DRAKE FOSTER CASILLAS</span><span class="dot">—</span>
+      <span>SAM ANDERSON</span><span class="dot">—</span>
+      <span>NOAH JAMES MAXWELL</span><span class="dot">—</span>
+      <span>ESTER HOLD</span><span class="dot">—</span>
+      <span>VICTOR CANFIELD</span><span class="dot">—</span>
+      <span>CASSIDY MERCER</span><span class="dot">—</span>
+      <span>JOHNNY ROBERT MAXWELL</span><span class="dot">—</span>
+      <span>DRAKE FOSTER CASILLAS</span><span class="dot">—</span>
+      <span>SAM ANDERSON</span><span class="dot">—</span>
+      <span>NOAH JAMES MAXWELL</span><span class="dot">—</span>
+      <span>ESTER HOLD</span><span class="dot">—</span>
+      <span>VICTOR CANFIELD</span><span class="dot">—</span>
+      <span>CASSIDY MERCER</span><span class="dot">—</span>
+    </div>
+  </div>
+
+  <audio id="bg-audio" src="./assets/music.mp3" loop></audio>
+<script src="./visualizer.js"></script>
+<section class="chars-section" id="characters" style="display:none;">
+ 
+    <div class="chars-header">
+      <div class="chars-header-left">
+        <div class="chars-tag">Remain Unaware · Database</div>
+        <div class="chars-title" data-i18n="nav_characters">CHARACTERS</div>
+      </div>
+      <div class="chars-header-right">
+        <span class="chars-count">07 / ENTRIES</span>
+      </div>
+    </div>
+ 
+    <div class="chars-filter-bar">
+      <button class="chars-tag-btn active" data-filter="all">ALL</button>
+      <button class="chars-tag-btn" data-filter="main">MAIN</button>
+      <button class="chars-tag-btn" data-filter="secondary">SECONDARY</button>
+      <button class="chars-tag-btn" data-filter="classified">CLASSIFIED</button>
+    </div>
+ 
+    <div class="chars-grid" id="charsGrid">
+ 
+      <div class="char-card" data-category="main">
+        <div class="char-card-num">01 /</div>
+        <div class="char-card-avatar">JM</div>
+        <div class="char-card-name">Johnny Maxwell</div>
+        <div class="char-card-role">Protagonist</div>
+        <div class="char-card-status alive">ALIVE</div>
+        <div class="char-card-arrow">→</div>
+      </div>
+ 
+      <div class="char-card" data-category="main">
+        <div class="char-card-num">02 /</div>
+        <div class="char-card-avatar">DFC</div>
+        <div class="char-card-name">Drake Foster</div>
+        <div class="char-card-role">Antagonist</div>
+        <div class="char-card-status alive">ALIVE</div>
+        <div class="char-card-arrow">→</div>
+      </div>
+ 
+      <div class="char-card" data-category="secondary">
+        <div class="char-card-num">03 /</div>
+        <div class="char-card-avatar">SA</div>
+        <div class="char-card-name">Sam Anderson</div>
+        <div class="char-card-role">Support</div>
+        <div class="char-card-status unknown">UNKNOWN</div>
+        <div class="char-card-arrow">→</div>
+      </div>
+ 
+      <div class="char-card" data-category="secondary">
+        <div class="char-card-num">04 /</div>
+        <div class="char-card-avatar">NM</div>
+        <div class="char-card-name">Noah Maxwell</div>
+        <div class="char-card-role">Secondary</div>
+        <div class="char-card-status dead">DEAD</div>
+        <div class="char-card-arrow">→</div>
+      </div>
+ 
+      <div class="char-card" data-category="secondary">
+        <div class="char-card-num">05 /</div>
+        <div class="char-card-avatar">EH</div>
+        <div class="char-card-name">Ester Hold</div>
+        <div class="char-card-role">Secondary</div>
+        <div class="char-card-status alive">ALIVE</div>
+        <div class="char-card-arrow">→</div>
+      </div>
+ 
+      <div class="char-card" data-category="secondary">
+        <div class="char-card-num">06 /</div>
+        <div class="char-card-avatar">VC</div>
+        <div class="char-card-name">Victor Canfield</div>
+        <div class="char-card-role">Secondary</div>
+        <div class="char-card-status unknown">UNKNOWN</div>
+        <div class="char-card-arrow">→</div>
+      </div>
+ 
+      <div class="char-card classified" data-category="classified">
+        <div class="char-card-num">07 /</div>
+        <div class="char-card-classified-label">CLASSIFIED</div>
+        <div class="char-card-avatar">CM</div>
+        <div class="char-card-name">Cassidy Mercer</div>
+        <div class="char-card-role">Support</div>
+        <div class="char-card-status alive">ALIVE</div>
+        <div class="char-card-arrow">→</div>
+      </div>
+ 
+    </div>
+  </section>
+ 
+  <div class="bottom-bar">
+    <span data-i18n="footer_left"></span>
+    <span data-i18n="footer_right"></span>
+  </div>
+
+ <audio id="bg-audio" src="./assets/music.mp3" loop></audio>
+  <script src="./i18n.js"></script>
+  <script src="./visualizer.js"></script>
+  <script src="./script.js"></script>
+
+
+</body>
+</html>

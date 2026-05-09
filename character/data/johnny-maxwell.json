@@ -1,0 +1,45 @@
+{
+  "file": "001",
+  "art": "../../assets/chars/johnnymaxwell.jpg",
+  "name": "Johnny Maxwell",
+  "name_short": "Johnny R.<br>Maxwell",
+  "name_full": "Johnny Robert<br>Maxwell",
+  "ghost": "Maxwell",
+  "alias": "The Wraith",
+  "desc": "Brilliant physicist turned cynical mercenary. Sharp-tongued, unpredictable in a fight.",
+  "banner": "../assets/chars/johnny-banner.jpg",
+  "tags": ["Merc", "physicist", "male", "original character", "he/him"],
+  "stats": [
+    { "label": "Age", "value": "23" },
+    { "label": "Birthday", "value": "17.04" },
+    { "label": "Height", "value": "188 cm" },
+    { "label": "Origin", "value": "Dallas, TX" },
+    { "label": "Job", "value": "Physicist / Mercenary" },
+    { "label": "Affiliation", "value": "Sablecore" },
+    { "label": "Status", "value": "Active" },
+    { "label": "Created", "value": "2022" }
+  ],
+  "palette": ["#0f0f0f", "#e8d5b0", "#7a8fa6", "#4a6355", "#6b6560"],
+  "backstory": "He grew up in a stable home with a biologist mother and an engineer father. His older brother Noah, four years his senior, is also a mercenary, though he lacks Johnny's scientific background. Johnny was born and raised in Dallas, Texas.\n\nDespite earning an honors degree, his school performance was usually below average — the type to cut class, sleep through lectures, or argue with professors. He was a typical rebellious teenager, except for one thing: outside the classroom drama, he was a genuine genius in his field.\n\nHis charisma and sense of humor have been there since day one. He can come off as overly blunt and sarcastic, but he's undeniably charming and sharp-witted. Growing up, he and Noah fought constantly but remained incredibly close — stealing their dad's car for midnight joyrides, hitting the shooting range, heading off to Boy Scout camps together.\n\nSince he was a kid, Johnny's heart belonged to two things: physics and cars. He'd spend hours in the garage, stripping engines to push them past their limits. His driving skills are legendary — he's never so much as scratched a fender — but his passengers usually end up praying for their lives. He lives for drifting, has his eye on a Corvette C8, and dreams of owning a Ferrari SF90 Stradale.\n\nAt 21, he finished his degree in nuclear physics and immediately chased the money. He turned to mercenary work, and in just two years went from a rookie to a high-level specialist, often running operations alongside his brother Noah.",
+  "personality": [
+    { "label": "Social Battery", "from": "Cynical", "to": "Charming", "value": 25 },
+    { "label": "Risk Tolerance", "from": "Calculated", "to": "Self-destructive", "value": 90 },
+    { "label": "Communication", "from": "Sarcastic", "to": "Professional", "value": 20 },
+    { "label": "Moral Compass", "from": "Mercenary", "to": "Loyal", "value": 50 },
+    { "label": "Temperament", "from": "Cold", "to": "Explosive", "value": 70 }
+  ],
+  "quote": "No way through? I'll break the wall. No wall? I'll tear the fucking ground open.",
+  "refs": [
+    "../../assets/chars/johnny-ref1.png",
+    "../../assets/chars/johnny-ref2.png",
+    "../../assets/chars/johnny-ref3.png"
+  ],
+  "gallery": [
+    { "src": "../assets/chars/johnny-art1.png", "label": "Official · 2025" },
+    { "src": "../assets/chars/johnny-art2.png", "label": "Official · 2026" },
+    { "src": "../assets/chars/johnny-art3.png", "label": "Official · 2025" },
+    { "src": "../assets/chars/johnny-art4.png", "label": "Official · 2025" },
+    { "src": "../assets/chars/johnny-art5.png", "label": "Official · 2025" },
+    { "src": "../assets/chars/johnny-art6.png", "label": "Official · 2025" }
+  ]
+}

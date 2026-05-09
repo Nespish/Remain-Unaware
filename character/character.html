@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>REMAIN UNAWARE — CHARACTER</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="./character.css">
+</head>
+<body>
+
+  <div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+<canvas id="snow" style="position:fixed;top:0;left:0;pointer-events:none;z-index:9999;"></canvas>
+
+<nav>
+  <div class="nav-logo">
+    <img src="../assets/logo.svg" height="28" alt="Remain Unaware">
+  </div>
+  <ul class="nav-links">
+    <li><a href="../index.html" data-i18n="nav_characters"></a></li>
+    <li><a href="#" data-i18n="nav_database"></a></li>
+    <li><a href="#" data-i18n="nav_backstory"></a></li>
+    <li><a href="#" data-i18n="nav_about"></a></li>
+    <li><a href="#" data-i18n="nav_fanworks"></a></li>
+    <li><a href="#" data-i18n="nav_ost"></a></li>
+  </ul>
+  <div class="nav-right">
+    <span data-i18n="nav_wip"></span>
+    &nbsp;·&nbsp;
+    <button id="lang-toggle" onclick="toggleLang()">EN</button>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="sidebar">
+    <div class="char-art">
+      <img id="char-art" src="" alt="">
+    </div>
+    <div class="char-info">
+      <div class="char-id" id="char-file"></div>
+      <div class="char-name" id="char-name"></div>
+      <div class="char-alias" id="char-alias"></div>
+      <div class="char-tags" id="char-tags"></div>
+      <div class="char-desc" id="char-desc"></div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- HEADER -->
+    <div class="char-header">
+      <div class="char-header-bg"></div>
+      <div class="char-header-ghost" id="char-ghost"></div>
+      <div class="char-header-label">// CHARACTER PROFILE</div>
+      <div class="char-header-name" id="char-fullname"></div>
+      <div class="char-header-quote" id="char-quote"></div>
+    </div>
+
+    <!-- STATS -->
+    <div class="char-stats" id="char-stats"></div>
+
+    <!-- DESIGN REF -->
+    <div class="section">
+      <div class="section-label">Design reference</div>
+      <div class="palette" id="char-palette"></div>
+      <div class="refs-grid" id="char-refs"></div>
+    </div>
+
+    
+
+    <!-- BACKSTORY -->
+<div class="section">
+  <div class="section-label">Backstory</div>
+  <div class="char-backstory" id="char-backstory"></div>
+</div>
+
+<!-- PERSONALITY -->
+<div class="section">
+  <div class="section-label">Personality</div>
+  <div class="char-personality" id="char-personality"></div>
+</div>
+
+  </main>
+</div>
+<!-- GALLERY -->
+    <div class="section">
+      <div class="section-label">Gallery</div>
+      <div class="gallery-grid" id="gallery"></div>
+    </div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightbox-close">[ CLOSE ]</button>
+  <img src="" id="lightbox-img" alt="">
+</div>
+
+<script>
+  let currentLang = 'en';
+  let translations = {};
+
+  async function loadLang(lang) {
+    const res = await fetch(`../locales/${lang}.json`);
+    translations = await res.json();
+    currentLang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[key]) el.innerHTML = translations[key];
+    });
+    document.getElementById('lang-toggle').textContent = lang.toUpperCase();
+  }
+
+  function toggleLang() {
+    loadLang(currentLang === 'ru' ? 'en' : 'ru');
+  }
+
+  loadLang('en');
+</script>
+<script src="./character.js"></script>
+
+</body>
+</html>
